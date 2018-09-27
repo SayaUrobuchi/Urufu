@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DmgType
+{
+	Physics = 1,
+	Fire = 2,
+	Ice = 3,
+	Lightning = 4,
+}
+
 public class Damager : MonoBehaviour {
 
 	public string TargetTag = "Enemy";
 	public int Damage = 10;
+	public DmgType Type = DmgType.Physics;
 
 	// Use this for initialization
 	void Start () {

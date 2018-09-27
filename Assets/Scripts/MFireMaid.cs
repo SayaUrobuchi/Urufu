@@ -9,6 +9,7 @@ public class MFireMaid : MonoBehaviour {
 	public GameObject ShotObject;  // 被發射的東西
 	public Transform ShotPosition;  // 發射位置；作為定位點的可用 Transform 型別
 	public int ShotPerSecond = 3;  // 射速最多每秒幾發
+	public AudioSource Sound;
 
 	private float timer = 0f;
 	private float shotInterval;
@@ -42,6 +43,10 @@ public class MFireMaid : MonoBehaviour {
 			}
 			shot.transform.position = pos;  // 將發射物的座標定位到發射座標
 			timer = shotInterval;  // 進入發射冷卻
+			if (Sound != null)
+			{
+				Sound.Play();
+			}
 		}
 	}
 }

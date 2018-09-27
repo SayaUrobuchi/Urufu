@@ -18,7 +18,10 @@ public class MBattler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		MaxHPTextContainer.text = MaxHP.ToString();  // 最大血量通常不變，可以一開始就設好，之後不動
+		if (MaxHPTextContainer)
+		{
+			MaxHPTextContainer.text = MaxHP.ToString();  // 最大血量通常不變，可以一開始就設好，之後不動
+		}
 		OnHPChanged();  // 一開始先讓血量顯示目前值，否則變動前會維持預設的不正確數字
 	}
 	
