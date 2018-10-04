@@ -7,6 +7,7 @@ public class MBattler : MonoBehaviour {
 
 	public Text HPTextContainer;
 	public Text MaxHPTextContainer;
+	public HPBarMaid HPBar;
 	public int HP;
 	public int MaxHP;
 	public int ChangePerTick = -4;  // 每次的變動量
@@ -47,6 +48,10 @@ public class MBattler : MonoBehaviour {
 		{
 			HPTextContainer.text = HP.ToString();  // 利用 .ToString() 可將數字轉成字串
 		}
+		if (HPBar != null)
+		{
+			HPBar.SetHPRate((float)HP/MaxHP);
+		}
 		if (HP == 0)
 		{
 			Destroy(gameObject);
@@ -62,6 +67,7 @@ public class MBattler : MonoBehaviour {
 			{
 				damageTimer = DamageInterval;
 			}
+			DamagePopupMaid.Summon.Popup(damage, transform.position);
 			OnHPChanged();
 		}
 	}

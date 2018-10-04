@@ -33,7 +33,8 @@ public class MainCharaControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float x = Input.GetAxis("Horizontal");
-		float y = Input.GetAxis("Vertical");
+		//float y = Input.GetAxis("Vertical");
+		float y = rb.velocity.y;
 		float accerate = 1f;
 		if (Input.GetKey(KeyCode.LeftShift))  // 按住 Shift 加速
 		{
@@ -41,15 +42,15 @@ public class MainCharaControl : MonoBehaviour {
 		}
 		if (MoveWay == MoveType.Velocity)
 		{
-			rb.velocity = (new Vector2(x, y)) * Speed * accerate;
+			rb.velocity = new Vector2(x * Speed * accerate, y);
 		}
 		else if (MoveWay == MoveType.Transform)
 		{
-			transform.Translate(new Vector2(x, y) * Speed / 10 * accerate);
+			transform.Translate(new Vector2(x * Speed / 10 * accerate, y));
 		}
 		else if (MoveWay == MoveType.Force)
 		{
-			rb.AddForce(new Vector2(x, y) * Speed * accerate);
+			rb.AddForce(new Vector2(x * Speed * accerate, y));
 		}
 		if (Flip)
 		{

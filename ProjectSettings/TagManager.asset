@@ -8,6 +8,7 @@ TagManager:
   - Shot
   - Block
   - Enemy
+  - Recycler
   layers:
   - Default
   - TransparentFX
